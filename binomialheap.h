@@ -39,13 +39,13 @@ struct BinomialHeapNode
 /*!
  * \brief The BinomialHeap class
  */
-class BinomialHeap
+class BinomialHeapDS
 {
 public:
     /*!
-     * \brief BinomialHeap
+     * \brief BinomialHeapDS
      */
-    BinomialHeap();
+    BinomialHeapDS();
     /*!
      * \brief insertBeforeStart
      * \param data
@@ -121,7 +121,7 @@ public:
      */
     void getCodeOfNode(BinomialHeapNode *node, std::string& NodeDeclaration);
 
-    ~BinomialHeap();
+    ~BinomialHeapDS();
 
     /*!
      * \brief dealockList

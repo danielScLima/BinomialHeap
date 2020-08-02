@@ -1,26 +1,26 @@
 #include "binomialheap.h"
 
-BinomialHeap::BinomialHeap()
+BinomialHeapDS::BinomialHeapDS()
 {
 
 }
 
-BinomialHeap::~BinomialHeap()
+BinomialHeapDS::~BinomialHeapDS()
 {
     dealockList(start, start);
 }
 
-BinomialHeapNode *BinomialHeap::getStartNode()
+BinomialHeapNode *BinomialHeapDS::getStartNode()
 {
     return this->start;
 }
 
-BinomialHeapNode *BinomialHeap::getMinNode()
+BinomialHeapNode *BinomialHeapDS::getMinNode()
 {
     return this->nodeWithMinimumValue;
 }
 
-void BinomialHeap::dealockList(BinomialHeapNode* initial, BinomialHeapNode* currentNode)
+void BinomialHeapDS::dealockList(BinomialHeapNode* initial, BinomialHeapNode* currentNode)
 {
     if (currentNode == nullptr)
         return;
@@ -39,7 +39,7 @@ void BinomialHeap::dealockList(BinomialHeapNode* initial, BinomialHeapNode* curr
     }
 }
 
-void BinomialHeap::insertBeforeStart(struct BinomialHeapNode* tmp)
+void BinomialHeapDS::insertBeforeStart(struct BinomialHeapNode* tmp)
 {
     if (this->nodeWithMinimumValue == nullptr)
         this->nodeWithMinimumValue = tmp;
@@ -68,7 +68,7 @@ void BinomialHeap::insertBeforeStart(struct BinomialHeapNode* tmp)
 }
 
 
-bool BinomialHeap::decrementKey(int dataKey, int decrement)
+bool BinomialHeapDS::decrementKey(int dataKey, int decrement)
 {
     BinomialHeapNode *node = search(dataKey);
     if (node == nullptr)
@@ -92,7 +92,7 @@ bool BinomialHeap::decrementKey(int dataKey, int decrement)
     return true;
 }
 
-void BinomialHeap::changeNodePosition(BinomialHeapNode* node)
+void BinomialHeapDS::changeNodePosition(BinomialHeapNode* node)
 {
     BinomialHeapNode* backupFather = node->father;
     if (node->next == node) //não tem irmãos
@@ -137,7 +137,7 @@ void BinomialHeap::changeNodePosition(BinomialHeapNode* node)
         increaseMarkAndCheckCondition(backupFather);
 }
 
-void BinomialHeap::increaseMarkAndCheckCondition(BinomialHeapNode* node)
+void BinomialHeapDS::increaseMarkAndCheckCondition(BinomialHeapNode* node)
 {
     if (node->marked == Marked::NO)
         node->marked = Marked::YES;
@@ -147,15 +147,15 @@ void BinomialHeap::increaseMarkAndCheckCondition(BinomialHeapNode* node)
     }
 }
 
-BinomialHeapNode *BinomialHeap::search(int data)
+BinomialHeapNode *BinomialHeapDS::search(int data)
 {
     if (start == nullptr)
         return nullptr;
 
-    return BinomialHeap::searchStartingOfNode(data, start);
+    return BinomialHeapDS::searchStartingOfNode(data, start);
 }
 
-BinomialHeapNode *BinomialHeap::searchStartingOfNode
+BinomialHeapNode *BinomialHeapDS::searchStartingOfNode
 (
     int data,
     BinomialHeapNode *initial
@@ -189,7 +189,7 @@ BinomialHeapNode *BinomialHeap::searchStartingOfNode
     return nullptr;
 }
 
-void BinomialHeap::insertBeforeStart(int data)
+void BinomialHeapDS::insertBeforeStart(int data)
 {
     struct BinomialHeapNode* tmp = new BinomialHeapNode(data);
     insertBeforeStart(tmp);
@@ -199,7 +199,7 @@ void BinomialHeap::insertBeforeStart(int data)
     consolidateFunction();
 }
 
-BinomialHeapNode *BinomialHeap::deleteMinInterface()
+BinomialHeapNode *BinomialHeapDS::deleteMinInterface()
 {
     BinomialHeapNode* min = deleteMin();
     if (min != nullptr)
@@ -207,7 +207,7 @@ BinomialHeapNode *BinomialHeap::deleteMinInterface()
     return min;
 }
 
-BinomialHeapNode *BinomialHeap::removeBeforeStart()
+BinomialHeapNode *BinomialHeapDS::removeBeforeStart()
 {
     if (start == nullptr)
         return nullptr;
@@ -240,7 +240,7 @@ BinomialHeapNode *BinomialHeap::removeBeforeStart()
     }
 }
 
-std::vector<std::string> BinomialHeap::getElementsAsVector()
+std::vector<std::string> BinomialHeapDS::getElementsAsVector()
 {
     std::vector<std::string> vec;
 
@@ -262,7 +262,7 @@ std::vector<std::string> BinomialHeap::getElementsAsVector()
     return vec;
 }
 
-void BinomialHeap::getCodeOfNode(BinomialHeapNode* node, std::string& nodeDeclaration)
+void BinomialHeapDS::getCodeOfNode(BinomialHeapNode* node, std::string& nodeDeclaration)
 {
     //nodeDeclaration += std::to_string(node->data)+";";
 
@@ -292,7 +292,7 @@ void BinomialHeap::getCodeOfNode(BinomialHeapNode* node, std::string& nodeDeclar
     nodeDeclaration += ">];";
 }
 
-void BinomialHeap::getDrawStartingOfNodeByModeTwo
+void BinomialHeapDS::getDrawStartingOfNodeByModeTwo
 (
     BinomialHeapNode* initial,
     std::string& nodeDeclaration,
@@ -399,7 +399,7 @@ void BinomialHeap::getDrawStartingOfNodeByModeTwo
     }
 }
 
-void BinomialHeap::getDrawStartingOfNodeByModeOne
+void BinomialHeapDS::getDrawStartingOfNodeByModeOne
 (
     BinomialHeapNode* initial,
     std::string& textToFile
@@ -482,7 +482,7 @@ void BinomialHeap::getDrawStartingOfNodeByModeOne
     }
 }
 
-const std::string BinomialHeap::getDrawModeOne()
+const std::string BinomialHeapDS::getDrawModeOne()
 {
     std::string textToFile = "digraph g{";
     textToFile += "rankdir = TB;";
@@ -504,7 +504,7 @@ const std::string BinomialHeap::getDrawModeOne()
     return textToFile;
 }
 
-const std::string BinomialHeap::getDrawModeTwo()
+const std::string BinomialHeapDS::getDrawModeTwo()
 {
     std::string textToFile = "digraph g{";
     textToFile += "node [shape=plaintext ];";
@@ -535,7 +535,7 @@ const std::string BinomialHeap::getDrawModeTwo()
     return textToFile;
 }
 
-BinomialHeapNode* BinomialHeap::mergeSubTrees
+BinomialHeapNode* BinomialHeapDS::mergeSubTrees
 (
       BinomialHeapNode* rootOne,
       BinomialHeapNode* rootTwo
@@ -587,7 +587,7 @@ BinomialHeapNode* BinomialHeap::mergeSubTrees
     }
 }
 
-BinomialHeapNode* BinomialHeap::deleteMin()
+BinomialHeapNode* BinomialHeapDS::deleteMin()
 {
     //Take the pointer to the minimum element in the tree
     //Remove this root and promote the childrens to root
@@ -679,7 +679,7 @@ BinomialHeapNode* BinomialHeap::deleteMin()
     return nodeWithMinimumValueBackup;
 }
 
-void BinomialHeap::consolidateFunction()
+void BinomialHeapDS::consolidateFunction()
 {
     //Se a quantidade de elementos for menor que 0, 1 ou mais
     nodeWithMinimumValue = start; //mesmo que não seja
@@ -705,7 +705,7 @@ void BinomialHeap::consolidateFunction()
                 vec[grau] = nullptr;
 
                 //Faz o merge com o removido
-                BinomialHeapNode* newTree = BinomialHeap::mergeSubTrees
+                BinomialHeapNode* newTree = BinomialHeapDS::mergeSubTrees
                 (
                       removedNodeOfList,
                       removedNodeOfVector
