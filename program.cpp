@@ -8,7 +8,7 @@ TEST_CASE( "Testing the insert calls in the heap", "[single-file]" )
 {
     SECTION( "Inserting" )
 	{
-		BinomialHeap f;
+		BinomialHeapDS f;
 		f.insertBeforeStart(50);
 		
 		BinomialHeapNode *startNode = f.getStartNode();
@@ -62,7 +62,7 @@ TEST_CASE( "Testing the remove calls in the heap", "[single-file]" )
 {	
 	SECTION( "Removing the min" )
 	{
-		BinomialHeap f;
+		BinomialHeapDS f;
 		f.insertBeforeStart(50);	
 		f.insertBeforeStart(100);
 		f.insertBeforeStart(75);
@@ -141,7 +141,7 @@ TEST_CASE( "Testing the decrease calls in the heap", "[single-file]" )
 {	
 	SECTION( "Testing the decrease, case one" )
 	{	
-		BinomialHeap f;
+		BinomialHeapDS f;
 		f.insertBeforeStart(50);	
 		f.insertBeforeStart(100);
 		f.insertBeforeStart(75);
@@ -182,7 +182,7 @@ TEST_CASE( "Testing the decrease calls in the heap", "[single-file]" )
 	
 	SECTION( "Testing the decrease, case two" )
 	{
-		BinomialHeap f;
+		BinomialHeapDS f;
 		f.insertBeforeStart(50);	
 		f.insertBeforeStart(100);
 		f.insertBeforeStart(75);
@@ -243,7 +243,7 @@ TEST_CASE( "Testing the search calls in the heap", "[single-file]" )
 {	
 	SECTION( "search calls" )
 	{	
-		BinomialHeap f;
+		BinomialHeapDS f;
 		f.insertBeforeStart(50);	
 		f.insertBeforeStart(100);
 		f.insertBeforeStart(75);
