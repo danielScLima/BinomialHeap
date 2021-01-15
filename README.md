@@ -1,5 +1,6 @@
 BinomialHeap
 ====================
+Building witth Travis: [![Build Status](https://www.travis-ci.com/danielScLima/BinomialHeap.svg?branch=master)](https://www.travis-ci.com/danielScLima/BinomialHeap)
 
 This repository has a project with the implementation of a BinomialHeap.
 
